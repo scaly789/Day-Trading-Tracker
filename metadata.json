@@ -1,0 +1,5 @@
+{
+  "name": "Day Trading Tracker",
+  "description": "A calendar-based application to track your daily day trading profits and losses with a modern, bubbly user interface. All data is stored locally in your browser.",
+  "requestFramePermissions": []
+}
