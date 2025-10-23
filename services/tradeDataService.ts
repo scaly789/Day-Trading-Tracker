@@ -3,21 +3,32 @@ import { Trades } from '../types';
 const STORAGE_KEY = 'dayTradingTrackerData';
 
 const getInitialData = (): Trades => {
-  const today = new Date();
-  const yesterday = new Date();
-  yesterday.setDate(today.getDate() - 1);
+  const trades: Trades = {};
+  
+  // Define specific trade entries with date, input, and output.
+  // This makes the default state consistent for all users, regardless of when they open the app.
+  // The date string MUST be in "YYYY-MM-DD" format.
+  const sampleTrades = [
+    { date: '2025-10-15', input: 280, output: 420 }, 
+    { date: '2025-10-16', input: 218, output: 380 }, 
+    { date: '2025-10-17', input: 752, output: 654 }, 
+    { date: '2025-10-20', input: 296, output: 420 }, 
+    { date: '2025-10-21', input: 1067, output: 951 },
+    { date: '2025-10-22', input: 408, output: 720 }, 
+    { date: '2025-10-23', input: 424, output: 490 }, 
+  ];
 
-  const formatKey = (d: Date) => {
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
-
-  return {
-    [formatKey(yesterday)]: { input: 1000, output: 950, pnl: -50 },
-    [formatKey(today)]: { input: 5000, output: 5250, pnl: 250 },
-  };
+  for (const trade of sampleTrades) {
+      // The date is already in the correct "YYYY-MM-DD" key format
+      const dateKey = trade.date;
+      trades[dateKey] = {
+        input: trade.input,
+        output: trade.output,
+        pnl: trade.output - trade.input,
+      };
+  }
+  
+  return trades;
 };
 
 export const getTrades = (): Trades => {
