@@ -1,10 +1,3 @@
-import React from 'react';
-
-interface ToggleOption {
-  label: string;
-  value: string;
-}
-
 interface ToggleSwitchProps<T extends string> {
   options: { label: string; value: T }[];
   selected: T;
