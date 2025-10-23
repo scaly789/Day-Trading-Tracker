@@ -203,7 +203,7 @@ Example:
           />
         </main>
 
-        <CatContainer trades={trades} />
+        <CatContainer trades={trades} currentDate={currentDate} />
 
         <TrendsSection trades={trades} currentDate={currentDate} />
       </div>
