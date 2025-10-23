@@ -1,4 +1,4 @@
-import { TradeData, Trades } from '../types';
+import { Trades } from '../types';
 
 const STORAGE_KEY = 'dayTradingTrackerData';
 
