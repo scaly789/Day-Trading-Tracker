@@ -6,33 +6,34 @@ import Cat from './Cat';
 
 interface CatContainerProps {
   trades: Trades;
+  currentDate: Date;
 }
 
 const catConfig: { [key in CatMood]: { Component: React.FC<React.SVGProps<SVGSVGElement>>, message: string, subMessage: string } } = {
   rich: {
     Component: RichCat,
-    message: "Top G Trader!",
-    subMessage: "The cat is impressed. Keep it up!"
+    message: "Excellent Gains!",
+    subMessage: "Your monthly return is looking great."
   },
   default: {
     Component: DefaultCat,
-    message: "Steady as she goes.",
-    subMessage: "The cat is watching your next move."
+    message: "Awaiting market moves.",
+    subMessage: "Keep an eye on your monthly performance."
   },
   sad: {
     Component: SadCat,
     message: "A slight downturn...",
-    subMessage: "Don't worry, the cat believes in you!"
+    subMessage: "Your monthly return is in the red."
   },
   verySad: {
     Component: VerySadCat,
-    message: "It's just a bad day.",
-    subMessage: "Time for a comeback. The cat's rooting for you."
+    message: "Tough Month.",
+    subMessage: "Stay disciplined. The cat's rooting for you."
   }
 };
 
-const CatContainer: React.FC<CatContainerProps> = ({ trades }) => {
-  const catMood = useCatLogic(trades);
+const CatContainer: React.FC<CatContainerProps> = ({ trades, currentDate }) => {
+  const catMood = useCatLogic(trades, currentDate);
   const { Component, message, subMessage } = catConfig[catMood];
 
   return (
