@@ -35,8 +35,12 @@ jobs:
           node-version: '20' # Use a current LTS version
           cache: 'npm'
 
-      - name: Install dependencies 👨‍🔧
-        run: npm install
+      - name: Clean install dependencies 👨‍🔧
+        run: |
+          npm cache clean --force
+          rm -rf node_modules
+          rm -f package-lock.json
+          npm install
 
       - name: Build project 📦
         run: npm run build # This script should create a `dist` directory. The base path is configured in vite.config.ts
