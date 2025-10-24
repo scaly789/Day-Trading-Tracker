@@ -15,7 +15,8 @@ const getInitialData = (): Trades => {
     { date: '2025-10-20', input: 296, output: 420 }, 
     { date: '2025-10-21', input: 1067, output: 951 },
     { date: '2025-10-22', input: 408, output: 720 }, 
-    { date: '2025-10-23', input: 424, output: 490 }, 
+    { date: '2025-10-23', input: 424, output: 490 },
+    { date: '2025-10-24', input: 408, output: 357 },
   ];
 
   for (const trade of sampleTrades) {
